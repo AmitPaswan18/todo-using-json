@@ -12,14 +12,14 @@ function App() {
   const [isthirdcheck, setthirdChecked] = useState(false);
 
   function handleitemone(e) {
-    setfirstChecked(e.target.value);
+    setfirstChecked(e.target.checked);
   }
 
   function handleitemtwo(e) {
-    setsecondChecked(e.target.value);
+    setsecondChecked(e.target.checked);
   }
   function handleitemthree(e) {
-    setthirdChecked(e.target.value);
+    setthirdChecked(e.target.checked);
   }
 
   return (
@@ -36,13 +36,14 @@ function App() {
               type="checkbox"
               name="element2"
               value={jsonData.item3}
+              checked={isfirstcheck}
               onChange={(e) => handleitemone(e)}
               className="m-2"
             />
             {jsonData.item1}
-            {isfirstcheck && (
+            {isfirstcheck ? (
               <span className="badge text-bg-success m-2">Complete</span>
-            )}
+            ) : null}
           </div>
           <div className="w-1/2 pr-7 rounded-sm h-10 border-2 border-slate-400 ">
             <input type="checkbox" />
@@ -55,26 +56,28 @@ function App() {
               type="checkbox"
               name="element2"
               className="m-2"
+              checked={issecondcheck}
               value={jsonData.item2}
               onChange={(e) => handleitemtwo(e)}
             />
             {jsonData.item2}
-            {issecondcheck && (
+            {issecondcheck ? (
               <span className="badge text-bg-success m-2">Complete</span>
-            )}
+            ) : null}
           </div>
           <div className="w-1/2 rounded-sm h-10 border-2  border-slate-400 ">
             <input
               type="checkbox"
               name="element2"
               className="m-2"
+              checked={isthirdcheck}
               value={jsonData.item3}
               onChange={(e) => handleitemthree(e)}
             />
             {jsonData.item3}
-            {isthirdcheck && (
+            {isthirdcheck ? (
               <span className="badge text-bg-success m-2">Complete</span>
-            )}
+            ) : null}
           </div>
           <div className=" w-1/2 text-left ">
             <div className="h-8 text-2xl my-2">Todo</div>
