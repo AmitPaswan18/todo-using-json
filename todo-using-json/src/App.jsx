@@ -1,35 +1,105 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  let jsonData = {
+    item1: "ddd",
+    item2: "abc",
+    item3: "xyz",
+  };
+
+  const [isfirstcheck, setfirstChecked] = useState(false);
+  const [issecondcheck, setsecondChecked] = useState(false);
+  const [isthirdcheck, setthirdChecked] = useState(false);
+
+  function handleitemone(e) {
+    setfirstChecked(e.target.checked);
+  }
+
+  function handleitemtwo(e) {
+    setsecondChecked(e.target.checked);
+  }
+  function handleitemthree(e) {
+    setthirdChecked(e.target.checked);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="flex  justify-center bg-slate-600 text-white items-center flex-col h-screen w-screen ">
+        <div className=" w-1/2 text-left text-3xl">
+          <div className="h-10 ">Todo App</div>
+        </div>
+        <div
+          className="w-full flex
+         flex-col justify-center items-center text-center">
+          <div className="w-1/2 rounded-sm h-10 border-2 border-slate-400 ">
+            <input
+              type="checkbox"
+              name="element2"
+              value={jsonData.item3}
+              checked={isfirstcheck}
+              onChange={(e) => handleitemone(e)}
+              className="m-2"
+            />
+            {jsonData.item1}
+            {isfirstcheck ? (
+              <span className="badge text-bg-success m-2">Complete</span>
+            ) : null}
+          </div>
+          <div className="w-1/2 pr-7 rounded-sm h-10 border-2 border-slate-400 ">
+            <input type="checkbox" />
+          </div>
+          <div className="w-1/2  pr-7 rounded-sm h-10 border-2 border-slate-400 ">
+            <input type="checkbox" />
+          </div>
+          <div className="w-1/2 rounded-sm h-10 border-2 border-slate-400 ">
+            <input
+              type="checkbox"
+              name="element2"
+              className="m-2"
+              checked={issecondcheck}
+              value={jsonData.item2}
+              onChange={(e) => handleitemtwo(e)}
+            />
+            {jsonData.item2}
+            {issecondcheck ? (
+              <span className="badge text-bg-success m-2">Complete</span>
+            ) : null}
+          </div>
+          <div className="w-1/2 rounded-sm h-10 border-2  border-slate-400 ">
+            <input
+              type="checkbox"
+              name="element2"
+              className="m-2"
+              checked={isthirdcheck}
+              value={jsonData.item3}
+              onChange={(e) => handleitemthree(e)}
+            />
+            {jsonData.item3}
+            {isthirdcheck ? (
+              <span className="badge text-bg-success m-2">Complete</span>
+            ) : null}
+          </div>
+          <div className=" w-1/2 text-left ">
+            <div className="h-8 text-2xl my-2">Todo</div>
+          </div>
+          <div className="w-1/2 rounded-sm text-black h-10 border-2">
+            <input
+              type="text"
+              placeholder="Your Todo.."
+              className=" w-full p-2 h-full"
+            />
+          </div>
+          <div className=" w-1/2 text-left ">
+            <button
+              className="p-2 text-black border-2 rounded-md my-2 bg-white"
+              type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
